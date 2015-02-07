@@ -7,21 +7,29 @@
 
 
     <TableLayout
-        android:layout_width="100%"
-        android:layout_height="100%">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
         <TableRow>
-            <TextView android:id="@+id/1card">
-
-            </TextView>
+            <TextView android:id="@+id/card1" android:gravity="center_horizontal"
+                android:text="X" />
+            <TextView android:id="@+id/card2" android:gravity="center_horizontal"
+                android:text="X" />
+            <TextView android:id="@+id/card3" android:gravity="center_horizontal"
+                android:text="X" />
+            <TextView android:id="@+id/card4" android:gravity="center_horizontal"
+                android:text="X" />
+            <TextView android:id="@+id/card5" android:gravity="center_horizontal"
+                android:text="X" />
+            <Button android:id="@+id/deal" android:text="Deal" />
         </TableRow>
         <TableRow>
-
-
+             <Button android:id="@+id/hold1" android:text="@string/hold" />
+             <Button android:id="@+id/hold2" android:text="@string/hold" />
+             <Button android:id="@+id/hold3" android:text="@string/hold" />
+             <Button android:id="@+id/hold4" android:text="@string/hold" />
+             <Button android:id="@+id/hold5" android:text="@string/hold" />
         </TableRow>
-
-
         </TableLayout>
-
-
 </LinearLayout>
