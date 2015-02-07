@@ -25,12 +25,13 @@ public class Deck {
         for(int i = 0; i < deck.length; i++) {
             int index = rand.nextInt(i);
             temp = deck[i];
-
+            deck [i] = deck [index];
+            deck [index] = temp;
         }
 
     }
 
-    public string printDeck () {
+    public String printDeck () {
 
         for(Card c: deck) {
             System.out.print(c + " ");
