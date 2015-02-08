@@ -32,6 +32,7 @@ public class HandTest extends TestCase {
     @SmallTest
     public void testCheckWinnings() {
         assertEquals(player.checkWinnings(), Hand.Winner.ROYAL_FLUSH);
+
     }
 
     @Override
