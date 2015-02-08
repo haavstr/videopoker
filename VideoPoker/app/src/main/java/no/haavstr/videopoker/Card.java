@@ -14,12 +14,12 @@ public class Card {
         this.value = value;
     }
 
-    @Override public String toString {
+    @Override public String toString (){
         return suit.getLetter() + value.getCardFaceValue();
     }
 
     enum Suit {
-        SPADES, HEARTS, DIAMONDS, CLUBS
+        SPADES, HEARTS, DIAMONDS, CLUBS;
 
         private char letter;
 
@@ -36,7 +36,7 @@ public class Card {
     }
 
     enum CardValue {
-        ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
+        ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
 
         private String cardFaceValue;
 

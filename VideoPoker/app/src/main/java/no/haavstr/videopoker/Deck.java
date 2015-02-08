@@ -3,12 +3,14 @@ package no.haavstr.videopoker;
 import java.util.Random;
 
 /**
+ * Deck.java
  * Created by haavstr on 07.02.15.
  */
 public class Deck {
-    Card deck[52];
+    Card deck[];
 
     Deck() {
+        deck = new Card[52];
         int i = 0;
         for (Card.Suit s: Card.Suit.values()) {
             for(Card.CardValue v : Card.CardValue.values()){
@@ -31,7 +33,7 @@ public class Deck {
 
     }
 
-    public String printDeck () {
+    public void printDeck () {
 
         for(Card c: deck) {
             System.out.print(c + " ");
