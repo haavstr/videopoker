@@ -2,18 +2,19 @@ package no.haavstr.videopoker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import no.haavstr.videopoker.Card.Suit;
+import no.haavstr.videopoker.Card.CardValue;
 /**
  * Created by haavstr on 07.02.15.
  *  */
 public class Hand {
     Card hand[];
 
-    Card.CardValue cardValues[];
+    CardValue cardValues[];
 
     public Hand() {
         hand = new Card [5];
-        cardValues = Card.CardValue.values();
+        cardValues = CardValue.values();
     }
 
     public Card getFirst () {
@@ -44,11 +45,35 @@ public class Hand {
         }
     }
 
-     Winner checkWinnings () {
-        if (false){
+     public Winner checkWinnings () {
+        sortHand();
+         //TODO
+        if (isRoyalFlush()){
             return Winner.ROYAL_FLUSH;
+        } else if (isFlush() && isStraight()) {
+           return Winner.STRAIGHT_FLUSH;
+        } else if (isFourOfAKind()) {
+             return Winner.FOUR_OF_A_KIND;
+        } else if (isFullHouse()) {
+            return Winner.FULL_HOUSE;
+        } else if (isFlush()) {
+            return Winner.FLUSH;
+        } else if (isStraight()) {
+            return Winner.STRAIGHT;
+        } else if (isThreeOfAKind()) {
+            return Winner.THREE_OF_A_KIND;
+        } else if (isTwoPairs()) {
+            return Winner.TWO_PAIR;
+        } else if (isPair()) {
+            return Winner.PAIR;
+        } else {
+            return null;
         }
-        return null;
+    }
+
+
+    void sortHand() {
+        Arrays.sort(hand);
     }
 
     /*
@@ -57,7 +82,7 @@ public class Hand {
 
     private boolean isFlush () {
         for(int i = 0; i < hand.length - 1; i++) {
-            if(hand[i].Suit != hand[i+1].Suit) {
+            if (hand[i].getSuit() != hand[i+1].getSuit()) {
                 return false;
             }
         }
@@ -65,23 +90,68 @@ public class Hand {
     }
 
     private boolean isStraight() {
+        /* Check for special case of Ace to five straight, which is the only straight with ace as bottomcard */
+        if(hand[4].getValue() == CardValue.ACE &&
+                hand[0].getValue() == CardValue.TWO &&
+                hand[1].getValue() == CardValue.THREE &&
+                hand[2].getValue() == CardValue.FOUR &&
+                hand[3].getValue() == CardValue.FIVE) {
+            return true;
+        } else {
+            for (int i = 0; i < 4; i++) {
+                if (hand[i].getValue().ordinal() != hand[i + 1].getValue().ordinal() - 1) {
+                    return false;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isRoyalFlush () {
+        if(isFlush() &&
+                hand[0].getValue() == CardValue.TEN &&
+                hand[1].getValue() == CardValue.JACK &&
+                hand[2].getValue() == CardValue.QUEEN &&
+                hand[3].getValue() == CardValue.KING &&
+                hand[4].getValue() == CardValue.ACE) {
+            return true;
+        }
         return false;
     }
 
     private boolean isFourOfAKind () {
-        if(hand[0].CardValue == hand[1].CardValue) {
-            return (hand[0].CardValue == hand[1].CardValue &&
-                    hand[1].CardValue == hand[2].CardValue &&
-                    hand[2].CardValue == hand[3].CardValue);
+        if(hand[0].getValue() == hand[1].getValue()) {
+            return (hand[0].getValue() == hand[1].getValue() &&
+                    hand[1].getValue() == hand[2].getValue() &&
+                    hand[2].getValue() == hand[3].getValue());
         } else {
-            return (hand[1].CardValue == hand[2].CardValue &&
-                    hand[2].CardValue == hand[3].CardValue &&
-                    hand[3].CardValue == hand[4].CardValue);
+            return (hand[1].getValue() == hand[2].getValue() &&
+                    hand[2].getValue() == hand[3].getValue() &&
+                    hand[3].getValue() == hand[4].getValue());
         }
     }
 
     private boolean isFullHouse () {
-        if(hand[0].CardValue == hand[1].CardValue)
+        if(hand[0].getValue() == hand[1].getValue()) {
+            //TODO
+        }
+        return false;
+    }
+
+    private boolean isThreeOfAKind () {
+        //TODO
+        return false;
+    }
+
+    private boolean isTwoPairs() {
+        //TODO
+        return false;
+    }
+
+    private boolean isPair () {
+        //TODO
+        return false;
     }
 
     enum Winner {

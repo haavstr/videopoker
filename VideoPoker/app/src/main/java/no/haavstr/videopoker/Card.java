@@ -5,13 +5,27 @@ import java.lang.Override;import java.lang.String; /**
  */
 
 
-public class Card {
+public class Card implements Comparable<Card>{
     private Suit suit;
     private CardValue value;
 
     Card(Suit suit, CardValue value) {
         this.suit = suit;
         this.value = value;
+    }
+
+    public Suit getSuit () {
+        return suit;
+    }
+
+    public CardValue getValue() {
+        return value;
+    }
+
+    public int compareTo(Card c){
+        Integer a = new Integer(this.value.ordinal());
+        Integer b = new Integer(c.value.ordinal());
+        return a.compareTo(b);
     }
 
     @Override public String toString (){
@@ -35,7 +49,7 @@ public class Card {
         }
     }
 
-    enum CardValue {
+    public enum CardValue {
         TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;
 
         private String cardFaceValue;
