@@ -134,23 +134,55 @@ public class Hand {
 
     private boolean isFullHouse () {
         if(hand[0].getValue() == hand[1].getValue()) {
-            //TODO
+            if(hand[2].getValue() == hand[3].getValue() &&
+               hand[3].getValue() == hand[4].getValue()) {
+                return true;
+            } else if (hand[1].getValue() == hand[2].getValue() &&
+                       hand[3].getValue() == hand[4].getValue()) {
+                return true;
+            }
         }
         return false;
     }
 
     private boolean isThreeOfAKind () {
-        //TODO
+        if (hand[0].getValue() == hand[1].getValue() &&
+                hand[1].getValue() == hand[2].getValue()){
+            return true;
+        } else if (hand[1].getValue() == hand[2].getValue() &&
+                hand[2].getValue() == hand[3].getValue()){
+            return true;
+        } else if (hand[2].getValue() == hand[3].getValue() &&
+                hand[3].getValue() == hand[4].getValue()){
+            return true;
+        }
         return false;
     }
 
     private boolean isTwoPairs() {
-        //TODO
+        if (hand[0].getValue() == hand[1].getValue() &&
+            hand[2].getValue() == hand[3].getValue()) {
+            return true;
+        } else if (hand[1].getValue() == hand[2].getValue() &&
+                   hand[3].getValue() == hand[4].getValue()) {
+            return true;
+        } else if (hand[0].getValue() == hand[1].getValue() &&
+                   hand[3].getValue() == hand[4].getValue()) {
+            return true;
+        }
         return false;
     }
 
     private boolean isPair () {
-        //TODO
+        if (hand[0].getValue() == hand[1].getValue()) {
+            return true;
+        } else if (hand[1].getValue() == hand[2].getValue()) {
+            return true;
+        } else if (hand[2].getValue() == hand[3].getValue()) {
+            return true;
+        } else if (hand[3].getValue() == hand[4].getValue()) {
+            return true;
+        }
         return false;
     }
 
