@@ -1,5 +1,0 @@
-/home/haavstr/AndroidStudioProjects/TestApp/app/build/intermediates/classes/debug
-/home/haavstr/AndroidStudioProjects/TestApp/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-1a3dc45ac6176ec03b4082ac95b7bb336a228e39.jar
-/home/haavstr/AndroidStudioProjects/TestApp/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-3d96b118db21e7c02269aec8e697f1006e0a15b0.jar
-/home/haavstr/AndroidStudioProjects/TestApp/app/build/intermediates/pre-dexed/debug/classes-b4af6897e6927e7df15925a777983c3b78e9fabb.jar
-/home/haavstr/AndroidStudioProjects/TestApp/app/build/intermediates/pre-dexed/debug/classes-05def07617c9c2829609ae42e5265937d811c486.jar
