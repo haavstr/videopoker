@@ -99,13 +99,12 @@ public class Hand {
             return true;
         } else {
             for (int i = 0; i < 4; i++) {
-                if (hand[i].getValue().ordinal() != hand[i + 1].getValue().ordinal() - 1) {
+                if (hand[i].getValue().ordinal() != hand[i + 1].getValue().ordinal() -1) {
                     return false;
                 }
-                return true;
             }
+            return true;
         }
-        return false;
     }
 
     private boolean isRoyalFlush () {

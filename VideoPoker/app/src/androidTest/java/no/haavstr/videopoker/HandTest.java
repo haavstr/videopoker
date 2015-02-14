@@ -15,6 +15,7 @@ public class HandTest extends TestCase {
     Card queenOfSpades = new Card(Card.Suit.SPADES, Card.CardValue.QUEEN);
     Card jackOfSpades = new Card(Card.Suit.SPADES, Card.CardValue.JACK);
     Card tenOfSpades = new Card(Card.Suit.SPADES, Card.CardValue.TEN);
+    Card nineOfSpades = new Card(Card.Suit.SPADES, Card.CardValue.NINE);
     Card fiveOfSpades = new Card(Card.Suit.SPADES, Card.CardValue.FIVE);
     Card sixOfClubs = new Card(Card.Suit.CLUBS, Card.CardValue.SIX);
     Card fiveOfClubs = new Card(Card.Suit.CLUBS, Card.CardValue.FIVE);
@@ -42,6 +43,8 @@ public class HandTest extends TestCase {
         player.hand[1] = tenOfSpades;
         player.hand[2] = jackOfSpades;
         assertEquals(player.checkWinnings(), Hand.Winner.ROYAL_FLUSH);
+        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT_FLUSH);
+        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT);
         player.hand[3] = fiveOfSpades;
         assertNotSame(player.checkWinnings(), Hand.Winner.ROYAL_FLUSH);
     }
@@ -58,15 +61,30 @@ public class HandTest extends TestCase {
     }
 
     @SmallTest
+    public void testCheckStraightFlush() {
+        player.hand[0] = kingOfSpades;
+        player.hand[1] = tenOfSpades;
+        player.hand[2] = jackOfSpades;
+        player.hand[3] = queenOfSpades;
+        player.hand[4] = nineOfSpades;
+        assertEquals(player.checkWinnings(), Hand.Winner.STRAIGHT_FLUSH);
+        player.hand[2] = fiveOfClubs;
+        assertNotSame(player.checkWinnings(), Hand.Winner.FLUSH);
+    }
+
+
+    @SmallTest
     public void testCheckStraight() {
-        player.hand[0] = aceOfSpades;
-        player.hand[1] = twoOfClubs;
+        player.hand[3] = aceOfSpades;
+        player.hand[4] = twoOfClubs;
         player.hand[2] = threeOfClubs;
-        player.hand[4] = fourOfClubs;
-        player.hand[3] = fiveOfSpades;
+        player.hand[1] = fourOfClubs;
+        player.hand[0] = fiveOfDiamonds;
         assertEquals(player.checkWinnings(), Hand.Winner.STRAIGHT);
         assertNotSame(player.checkWinnings(), Hand.Winner.FLUSH);
         assertNotSame(player.checkWinnings(), Hand.Winner.ROYAL_FLUSH);
+        player.hand[4] = queenOfSpades;
+        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT);
     }
 
     @SmallTest
@@ -113,9 +131,25 @@ public class HandTest extends TestCase {
         player.hand[3] = eightOfDiamonds;
         assertEquals(player.checkWinnings(), Hand.Winner.PAIR);
         assertNotSame(player.checkWinnings(), Hand.Winner.TWO_PAIR);
+        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT);
     }
 
+    @SmallTest
+    public void testCheckNothing() {
+        player.hand[0] = sixOfDiamonds;
+        player.hand[1] = queenOfSpades;
+        player.hand[2] = fiveOfClubs;
+        player.hand[3] = eightOfDiamonds;
+        player.hand[4] = nineOfDiamonds;
+        assertNull(player.checkWinnings());
 
+        player.hand[0] = sixOfDiamonds;
+        player.hand[1] = queenOfSpades;
+        player.hand[2] = fiveOfClubs;
+        player.hand[3] = twoOfClubs;
+        player.hand[4] = nineOfDiamonds;
+        assertNull(player.checkWinnings());
+    }
 
     @Override
     protected void tearDown() throws Exception{
