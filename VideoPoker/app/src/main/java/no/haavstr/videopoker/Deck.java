@@ -6,38 +6,35 @@ import java.util.Random;
  * Deck.java
  * Created by haavstr on 07.02.15.
  */
-public class Deck {
-    Card deck[];
 
+import java.util.Collections;
+import java.util.ArrayList;
+
+public final class Deck extends ArrayList<Card> {
+
+
+    @Override
+    public int size() {
+        return super.size();
+    }
+
+    /* Populates a new deck of cards. One of each value for each suit.
+     * Note that they are initially not shuffled */
     Deck() {
-        deck = new Card[52];
-        int i = 0;
         for (Card.Suit s: Card.Suit.values()) {
             for(Card.CardValue v : Card.CardValue.values()){
-                deck[i] = new Card(s, v);
-                i++;
+                this.add(new Card(s, v));
             }
         }
     }
 
     public void shuffle () {
-        Random rand = new Random();
-        Card temp;
-
-        for(int i = 0; i < deck.length; i++) {
-            int index = rand.nextInt(i);
-            temp = deck[i];
-            deck [i] = deck [index];
-            deck [index] = temp;
-        }
-
+        Collections.shuffle(this);
     }
 
     public void printDeck () {
-
-        for(Card c: deck) {
+        for(Card c: this) {
             System.out.print(c + " ");
         }
     }
-
 }

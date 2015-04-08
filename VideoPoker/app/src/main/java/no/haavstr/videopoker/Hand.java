@@ -72,6 +72,9 @@ public class Hand {
     }
 
 
+
+
+
     void sortHand() {
         Arrays.sort(hand);
     }
@@ -108,15 +111,12 @@ public class Hand {
     }
 
     private boolean isRoyalFlush () {
-        if(isFlush() &&
+        return isFlush() &&
                 hand[0].getValue() == CardValue.TEN &&
                 hand[1].getValue() == CardValue.JACK &&
                 hand[2].getValue() == CardValue.QUEEN &&
                 hand[3].getValue() == CardValue.KING &&
-                hand[4].getValue() == CardValue.ACE) {
-            return true;
-        }
-        return false;
+                hand[4].getValue() == CardValue.ACE;
     }
 
     private boolean isFourOfAKind () {

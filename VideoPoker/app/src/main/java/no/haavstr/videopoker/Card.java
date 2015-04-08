@@ -1,9 +1,12 @@
 package no.haavstr.videopoker;
 
-import java.lang.Override;import java.lang.String; /**
+import java.lang.Override;
+import java.lang.String;
+import android.support.annotation.NonNull;
+
+/**
  * Created by haavstr on 07.02.15.
  */
-
 
 public class Card implements Comparable<Card>{
     private Suit suit;
@@ -22,7 +25,8 @@ public class Card implements Comparable<Card>{
         return value;
     }
 
-    public int compareTo(Card c){
+    @Override
+    public int compareTo(@NonNull Card c){
         Integer a = new Integer(this.value.ordinal());
         Integer b = new Integer(c.value.ordinal());
         return a.compareTo(b);
