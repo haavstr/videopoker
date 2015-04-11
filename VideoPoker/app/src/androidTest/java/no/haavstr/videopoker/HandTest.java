@@ -42,11 +42,11 @@ public class HandTest extends TestCase {
         player.hand[3] = queenOfSpades;
         player.hand[1] = tenOfSpades;
         player.hand[2] = jackOfSpades;
-        assertEquals(player.checkWinnings(), Hand.Winner.ROYAL_FLUSH);
-        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT_FLUSH);
-        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT);
+        assertEquals(player.checkWinnings(), Winner.ROYAL_FLUSH);
+        assertNotSame(player.checkWinnings(), Winner.STRAIGHT_FLUSH);
+        assertNotSame(player.checkWinnings(), Winner.STRAIGHT);
         player.hand[3] = fiveOfSpades;
-        assertNotSame(player.checkWinnings(), Hand.Winner.ROYAL_FLUSH);
+        assertNotSame(player.checkWinnings(), Winner.ROYAL_FLUSH);
     }
     @SmallTest
     public void testCheckFlush() {
@@ -55,9 +55,9 @@ public class HandTest extends TestCase {
         player.hand[2] = jackOfSpades;
         player.hand[3] = queenOfSpades;
         player.hand[4] = fiveOfSpades;
-        assertEquals(player.checkWinnings(), Hand.Winner.FLUSH);
+        assertEquals(player.checkWinnings(), Winner.FLUSH);
         player.hand[2] = fiveOfClubs;
-        assertNotSame(player.checkWinnings(), Hand.Winner.FLUSH);
+        assertNotSame(player.checkWinnings(), Winner.FLUSH);
     }
 
     @SmallTest
@@ -67,9 +67,9 @@ public class HandTest extends TestCase {
         player.hand[2] = jackOfSpades;
         player.hand[3] = queenOfSpades;
         player.hand[4] = nineOfSpades;
-        assertEquals(player.checkWinnings(), Hand.Winner.STRAIGHT_FLUSH);
+        assertEquals(player.checkWinnings(), Winner.STRAIGHT_FLUSH);
         player.hand[2] = fiveOfClubs;
-        assertNotSame(player.checkWinnings(), Hand.Winner.FLUSH);
+        assertNotSame(player.checkWinnings(), Winner.FLUSH);
     }
 
 
@@ -80,11 +80,11 @@ public class HandTest extends TestCase {
         player.hand[2] = threeOfClubs;
         player.hand[1] = fourOfClubs;
         player.hand[0] = fiveOfDiamonds;
-        assertEquals(player.checkWinnings(), Hand.Winner.STRAIGHT);
-        assertNotSame(player.checkWinnings(), Hand.Winner.FLUSH);
-        assertNotSame(player.checkWinnings(), Hand.Winner.ROYAL_FLUSH);
+        assertEquals(player.checkWinnings(), Winner.STRAIGHT);
+        assertNotSame(player.checkWinnings(), Winner.FLUSH);
+        assertNotSame(player.checkWinnings(), Winner.ROYAL_FLUSH);
         player.hand[4] = queenOfSpades;
-        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT);
+        assertNotSame(player.checkWinnings(), Winner.STRAIGHT);
     }
 
     @SmallTest
@@ -94,10 +94,10 @@ public class HandTest extends TestCase {
         player.hand[2] = fiveOfClubs;
         player.hand[0] = sixOfDiamonds;
         player.hand[3] = fiveOfSpades;
-        assertEquals(player.checkWinnings(), Hand.Winner.FULL_HOUSE);
-        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT);
-        assertNotSame(player.checkWinnings(), Hand.Winner.FLUSH);
-        assertNotSame(player.checkWinnings(), Hand.Winner.ROYAL_FLUSH);
+        assertEquals(player.checkWinnings(), Winner.FULL_HOUSE);
+        assertNotSame(player.checkWinnings(), Winner.STRAIGHT);
+        assertNotSame(player.checkWinnings(), Winner.FLUSH);
+        assertNotSame(player.checkWinnings(), Winner.ROYAL_FLUSH);
     }
 
     @SmallTest
@@ -107,8 +107,8 @@ public class HandTest extends TestCase {
         player.hand[0] = sixOfDiamonds;
         player.hand[3] = fiveOfSpades;
         player.hand[4] = nineOfDiamonds;
-        assertEquals(player.checkWinnings(), Hand.Winner.THREE_OF_A_KIND);
-        assertNotSame(player.checkWinnings(), Hand.Winner.FULL_HOUSE);
+        assertEquals(player.checkWinnings(), Winner.THREE_OF_A_KIND);
+        assertNotSame(player.checkWinnings(), Winner.FULL_HOUSE);
     }
 
     @SmallTest
@@ -118,8 +118,8 @@ public class HandTest extends TestCase {
         player.hand[0] = sixOfDiamonds;
         player.hand[4] = nineOfDiamonds;
         player.hand[3] = sixOfClubs;
-        assertEquals(player.checkWinnings(), Hand.Winner.TWO_PAIR);
-        assertNotSame(player.checkWinnings(), Hand.Winner.FULL_HOUSE);
+        assertEquals(player.checkWinnings(), Winner.TWO_PAIR);
+        assertNotSame(player.checkWinnings(), Winner.FULL_HOUSE);
     }
 
     @SmallTest
@@ -129,9 +129,9 @@ public class HandTest extends TestCase {
         player.hand[0] = sixOfDiamonds;
         player.hand[4] = nineOfDiamonds;
         player.hand[3] = eightOfDiamonds;
-        assertEquals(player.checkWinnings(), Hand.Winner.PAIR);
-        assertNotSame(player.checkWinnings(), Hand.Winner.TWO_PAIR);
-        assertNotSame(player.checkWinnings(), Hand.Winner.STRAIGHT);
+        assertEquals(player.checkWinnings(), Winner.PAIR);
+        assertNotSame(player.checkWinnings(), Winner.TWO_PAIR);
+        assertNotSame(player.checkWinnings(), Winner.STRAIGHT);
     }
 
     @SmallTest

@@ -1,0 +1,197 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:baselineAligned="true"
+    android:background="#BBBBDD">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:baselineAligned="true">
+            <TableRow android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <TextView android:id="@+id/royalflushtitle" android:text="@string/royalflushtitle"/>
+                <TextView android:id="@+id/royalflushreward" android:text="@string/royalflushreward"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/straightflushtitle" android:text="@string/straightflushtitle"/>
+                <TextView android:id="@+id/straightflushreward" android:text="@string/straightflushreward"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/fourofakindtitle" android:text="@string/fourofakindtitle"/>
+                <TextView android:id="@+id/fourofakindreward" android:text="@string/fourofakindreward"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/fullhousetitle" android:text="@string/fullhousetitle"/>
+                <TextView android:id="@+id/fullhousereward" android:text="@string/fullhousereward"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/flushtitle" android:text="@string/flushtitle"/>
+                <TextView android:id="@+id/flushreward" android:text="@string/flushreward"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/straighttitle" android:text="@string/straighttitle"/>
+                <TextView android:id="@+id/straightreward" android:text="@string/straightreward"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/threeofakindtitle" android:text="@string/threeofakindtitle"/>
+                <TextView android:id="@+id/threeofakindreward" android:text="@string/threeofakindreward"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/twopairstitle" android:text="@string/twopairstitle"/>
+                <TextView android:id="@+id/twopairsreward" android:text="@string/twopairsreward"/>
+            </TableRow>
+            <TableRow>
+                <TextView android:id="@+id/pairtitle" android:text="@string/pairtitle"/>
+                <TextView android:id="@+id/pairreward" android:text="@string/pairreward"/>
+            </TableRow>
+            </TableLayout>
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:baselineAligned="true">
+        <TableRow>
+            <TextView android:id="@+id/cashtitle" android:text="@string/cashtitle"/>
+            <TextView android:id="@+id/cashvalue" android:text="@string/cashvalue"/>
+        </TableRow>
+    </TableLayout>
+        </LinearLayout>
+
+        <!--
+
+
+        <Button android:id="@+id/hold5" android:text="@string/hold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/hold4"
+            android:layout_toRightOf="@+id/hold4"
+            android:layout_toEndOf="@+id/hold4" />
+
+        <Button android:id="@+id/hold4" android:text="@string/hold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/hold3"
+            android:layout_toRightOf="@+id/hold3"
+            android:layout_toEndOf="@+id/hold3" />
+
+        <Button android:id="@+id/hold3" android:text="@string/hold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/hold2"
+            android:layout_toRightOf="@+id/hold2"
+            android:layout_toEndOf="@+id/hold2" />
+
+        <Button android:id="@+id/hold1" android:text="@string/hold"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button android:id="@+id/hold2" android:text="@string/hold"
+            android:layout_alignTop="@+id/hold1"
+            android:layout_toRightOf="@+id/hold1"
+            android:layout_toEndOf="@+id/hold1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />-->
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView android:id="@+id/card3" android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/red_back"
+
+                android:contentDescription="Card number 3"
+                android:clickable="true"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/hold2"
+                android:layout_toEndOf="@+id/hold2"
+            android:baselineAlignBottom="false"
+            android:focusable="false"
+            android:layout_margin="5dp" />
+
+        <ImageView android:id="@+id/card1" android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/red_back"
+            android:contentDescription="Card number 1"
+            android:clickable="true"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="5dp" />
+
+        <ImageView android:id="@+id/card5" android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:src="@drawable/red_back"
+                android:contentDescription="Card number 5"
+                android:clickable="true"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/hold5"
+                android:layout_alignEnd="@+id/hold5"
+            android:layout_margin="5dp" />
+
+        <ImageView android:id="@+id/card2" android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/red_back"
+                android:contentDescription="Card number 2"
+                android:clickable="true"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/hold2"
+                android:layout_alignStart="@+id/hold2"
+            android:layout_margin="5dp" />
+
+        <ImageView android:id="@+id/card4" android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/red_back"
+            android:contentDescription="Card number 4"
+            android:clickable="true"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/hold3"
+            android:layout_toEndOf="@+id/hold3"
+            android:layout_margin="5dp" />
+
+        <Button android:id="@+id/deal" android:text="Deal"
+            android:layout_gravity="center_vertical|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

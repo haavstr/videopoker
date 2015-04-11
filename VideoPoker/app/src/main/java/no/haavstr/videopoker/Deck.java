@@ -1,7 +1,5 @@
 package no.haavstr.videopoker;
 
-import java.util.Random;
-
 /**
  * Deck.java
  * Created by haavstr on 07.02.15.

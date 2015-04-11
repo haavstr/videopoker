@@ -27,29 +27,29 @@ public class Card implements Comparable<Card>{
 
     @Override
     public int compareTo(@NonNull Card c){
-        Integer a = new Integer(this.value.ordinal());
-        Integer b = new Integer(c.value.ordinal());
+        Integer a = this.value.ordinal();
+        Integer b = c.value.ordinal();
         return a.compareTo(b);
     }
 
     @Override public String toString (){
-        return suit.getLetter() + value.getCardFaceValue();
+        return value.getCardFaceValue() + "_of_" + suit.getName();
     }
 
     enum Suit {
         SPADES, HEARTS, DIAMONDS, CLUBS;
 
-        private char letter;
+        private String name;
 
         static {
-            SPADES.letter = 'S';
-            HEARTS.letter = 'H';
-            DIAMONDS.letter = 'D';
-            CLUBS.letter = 'C';
+            SPADES.name = "spades";
+            HEARTS.name = "hearts";
+            DIAMONDS.name = "diamonds";
+            CLUBS.name = "clubs";
         }
 
-        public char getLetter(){
-            return letter;
+        public String getName(){
+            return name;
         }
     }
 
@@ -59,19 +59,19 @@ public class Card implements Comparable<Card>{
         private String cardFaceValue;
 
         static {
-            ACE.cardFaceValue = "A";
-            TWO.cardFaceValue = "2";
-            THREE.cardFaceValue = "3";
-            FOUR.cardFaceValue = "4";
-            FIVE.cardFaceValue = "5";
-            SIX.cardFaceValue = "6";
-            SEVEN.cardFaceValue = "7";
-            EIGHT.cardFaceValue = "8";
-            NINE.cardFaceValue = "9";
-            TEN.cardFaceValue = "10";
-            JACK.cardFaceValue = "J";
-            QUEEN.cardFaceValue = "Q";
-            KING.cardFaceValue = "K";
+            ACE.cardFaceValue = "ace";
+            TWO.cardFaceValue = "two";
+            THREE.cardFaceValue = "three";
+            FOUR.cardFaceValue = "four";
+            FIVE.cardFaceValue = "five";
+            SIX.cardFaceValue = "six";
+            SEVEN.cardFaceValue = "seven";
+            EIGHT.cardFaceValue = "eight";
+            NINE.cardFaceValue = "nine";
+            TEN.cardFaceValue = "ten";
+            JACK.cardFaceValue = "jack";
+            QUEEN.cardFaceValue = "queen";
+            KING.cardFaceValue = "king";
         }
 
         public String getCardFaceValue() {

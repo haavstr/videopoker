@@ -1,8 +1,6 @@
 package no.haavstr.videopoker;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import no.haavstr.videopoker.Card.Suit;
 import no.haavstr.videopoker.Card.CardValue;
 /**
  * Created by haavstr on 07.02.15.
@@ -10,11 +8,9 @@ import no.haavstr.videopoker.Card.CardValue;
 public class Hand {
     Card hand[];
 
-    CardValue cardValues[];
-
     public Hand() {
         hand = new Card [5];
-        cardValues = CardValue.values();
+
     }
 
     public Card getFirst () {
@@ -45,9 +41,8 @@ public class Hand {
         }
     }
 
-     public Winner checkWinnings () {
+    public Winner checkWinnings () {
         sortHand();
-         //TODO
         if (isRoyalFlush()){
             return Winner.ROYAL_FLUSH;
         } else if (isFlush() && isStraight()) {
@@ -185,7 +180,5 @@ public class Hand {
         return false;
     }
 
-    enum Winner {
-        ROYAL_FLUSH, STRAIGHT_FLUSH, FOUR_OF_A_KIND, FULL_HOUSE, FLUSH, STRAIGHT, THREE_OF_A_KIND, TWO_PAIR, PAIR
-    }
+
 }

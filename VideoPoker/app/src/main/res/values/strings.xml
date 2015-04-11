@@ -4,5 +4,31 @@
     <string name="app_name">Video Poker</string>
     <string name="action_settings">Settings</string>
     <string name="hold">Hold</string>
+    <string name="cashtitle">Cash:</string>
+    <string name="cashvalue">0</string>
+
+
+    <!--Names and values of the winning hands possible-->
+    <string name="royalflushtitle">Royal flush</string>
+    <string name="royalflushreward">250</string>
+    <string name="straightflushtitle">Straight flush</string>
+    <string name="straightflushreward">50</string>
+    <string name="fourofakindtitle">Four of a kind</string>
+    <string name="fourofakindreward">25</string>
+    <string name="fullhousetitle">Full house</string>
+    <string name="fullhousereward">9</string>
+    <string name="flushtitle">Flush</string>
+    <string name="flushreward">6</string>
+    <string name="straighttitle">Straight</string>
+    <string name="straightreward">4</string>
+    <string name="threeofakindtitle">Three of a kind</string>
+    <string name="threeofakindreward">3</string>
+    <string name="twopairstitle">Two pairs</string>
+    <string name="twopairsreward">2</string>
+    <string name="pairtitle">Pairs</string>
+    <string name="pairreward">1</string>
+
+
+
 
 </resources>
