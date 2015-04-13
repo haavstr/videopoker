@@ -3,9 +3,6 @@ package no.haavstr.videopoker;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,7 +13,8 @@ import java.util.Arrays;
 /**
  * Created by haavstr on 08.04.15.
  */
-public class GameActivity extends ActionBarActivity {
+public class GameActivity extends Activity //implements TaskFragment.TaskCallbacks
+{
     private Hand hand;
     private Deck deck;
     private int cash;
@@ -53,20 +51,19 @@ public class GameActivity extends ActionBarActivity {
                 }
             }
         });
-        /*
-        /* For card-positions 1 */
 
-
+        // For card-positions 1
         card1 = (ImageView) findViewById(R.id.card1);
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            /* Card is marked for change already, so this click means the user wants to undo this. Show the card again*/
+
                 if (!readyForNewRound) {
+                    // Card is marked for change already, so this click means the user wants to undo this. Show the card again
                     if (changePosition[0]) {
                         changePosition[0] = false;
                         card1.setImageResource(context.getResources().getIdentifier(hand.hand[0].toString(), "drawable", context.getPackageName()));
-                        /* Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
+                    // Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
                     } else {
                         changePosition[0] = true;
                         card1.setImageResource(R.drawable.red_back);
@@ -84,7 +81,7 @@ public class GameActivity extends ActionBarActivity {
                     if (changePosition[1]) {
                         changePosition[1] = false;
                         card2.setImageResource(context.getResources().getIdentifier(hand.hand[1].toString(), "drawable", context.getPackageName()));
-                        /* Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
+                    /* Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
                     } else {
                         changePosition[1] = true;
                         card2.setImageResource(R.drawable.red_back);
@@ -162,7 +159,6 @@ public class GameActivity extends ActionBarActivity {
     void gameOver() {
         /*TODO*/
     }
-
     void newRound(){
         cash--;
         showCash();
@@ -219,7 +215,7 @@ public class GameActivity extends ActionBarActivity {
         Arrays.fill(changePosition, false);
     }
 
-
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -240,5 +236,5 @@ public class GameActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
