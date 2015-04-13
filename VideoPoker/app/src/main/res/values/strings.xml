@@ -3,9 +3,10 @@
 
     <string name="app_name">Video Poker</string>
     <string name="action_settings">Settings</string>
-    <string name="hold">Hold</string>
     <string name="cashtitle">Cash:</string>
     <string name="cashvalue">0</string>
+    <string name="deal">Deal</string>
+    <string name="change">Change</string>
 
 
     <!--Names and values of the winning hands possible-->

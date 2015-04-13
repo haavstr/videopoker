@@ -20,39 +20,48 @@
             <TableRow android:layout_width="wrap_content"
                 android:layout_height="match_parent">
                 <TextView android:id="@+id/royalflushtitle" android:text="@string/royalflushtitle"/>
-                <TextView android:id="@+id/royalflushreward" android:text="@string/royalflushreward"/>
+                <TextView android:id="@+id/royalflushreward" android:text="@string/royalflushreward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             <TableRow>
                 <TextView android:id="@+id/straightflushtitle" android:text="@string/straightflushtitle"/>
-                <TextView android:id="@+id/straightflushreward" android:text="@string/straightflushreward"/>
+                <TextView android:id="@+id/straightflushreward" android:text="@string/straightflushreward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             <TableRow>
                 <TextView android:id="@+id/fourofakindtitle" android:text="@string/fourofakindtitle"/>
-                <TextView android:id="@+id/fourofakindreward" android:text="@string/fourofakindreward"/>
+                <TextView android:id="@+id/fourofakindreward" android:text="@string/fourofakindreward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             <TableRow>
                 <TextView android:id="@+id/fullhousetitle" android:text="@string/fullhousetitle"/>
-                <TextView android:id="@+id/fullhousereward" android:text="@string/fullhousereward"/>
+                <TextView android:id="@+id/fullhousereward" android:text="@string/fullhousereward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             <TableRow>
                 <TextView android:id="@+id/flushtitle" android:text="@string/flushtitle"/>
-                <TextView android:id="@+id/flushreward" android:text="@string/flushreward"/>
+                <TextView android:id="@+id/flushreward" android:text="@string/flushreward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             <TableRow>
                 <TextView android:id="@+id/straighttitle" android:text="@string/straighttitle"/>
-                <TextView android:id="@+id/straightreward" android:text="@string/straightreward"/>
+                <TextView android:id="@+id/straightreward" android:text="@string/straightreward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             <TableRow>
                 <TextView android:id="@+id/threeofakindtitle" android:text="@string/threeofakindtitle"/>
-                <TextView android:id="@+id/threeofakindreward" android:text="@string/threeofakindreward"/>
+                <TextView android:id="@+id/threeofakindreward" android:text="@string/threeofakindreward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             <TableRow>
                 <TextView android:id="@+id/twopairstitle" android:text="@string/twopairstitle"/>
-                <TextView android:id="@+id/twopairsreward" android:text="@string/twopairsreward"/>
+                <TextView android:id="@+id/twopairsreward" android:text="@string/twopairsreward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             <TableRow>
                 <TextView android:id="@+id/pairtitle" android:text="@string/pairtitle"/>
-                <TextView android:id="@+id/pairreward" android:text="@string/pairreward"/>
+                <TextView android:id="@+id/pairreward" android:text="@string/pairreward"
+                    android:layout_marginLeft="10dp"/>
             </TableRow>
             </TableLayout>
     <TableLayout
@@ -61,49 +70,15 @@
         android:layout_weight="1"
         android:baselineAligned="true">
         <TableRow>
-            <TextView android:id="@+id/cashtitle" android:text="@string/cashtitle"/>
-            <TextView android:id="@+id/cashvalue" android:text="@string/cashvalue"/>
+            <TextView android:id="@+id/cashtitle" android:text="@string/cashtitle" />
+            <TextView android:id="@+id/cashvalue" android:text="@string/cashvalue"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="end" />
         </TableRow>
     </TableLayout>
         </LinearLayout>
 
-        <!--
 
-
-        <Button android:id="@+id/hold5" android:text="@string/hold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/hold4"
-            android:layout_toRightOf="@+id/hold4"
-            android:layout_toEndOf="@+id/hold4" />
-
-        <Button android:id="@+id/hold4" android:text="@string/hold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/hold3"
-            android:layout_toRightOf="@+id/hold3"
-            android:layout_toEndOf="@+id/hold3" />
-
-        <Button android:id="@+id/hold3" android:text="@string/hold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/hold2"
-            android:layout_toRightOf="@+id/hold2"
-            android:layout_toEndOf="@+id/hold2" />
-
-        <Button android:id="@+id/hold1" android:text="@string/hold"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button android:id="@+id/hold2" android:text="@string/hold"
-            android:layout_alignTop="@+id/hold1"
-            android:layout_toRightOf="@+id/hold1"
-            android:layout_toEndOf="@+id/hold1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />-->
 
     <LinearLayout
         android:orientation="horizontal"
@@ -115,7 +90,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/red_back"
-
                 android:contentDescription="Card number 3"
                 android:clickable="true"
                 android:cropToPadding="false"
