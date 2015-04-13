@@ -7,7 +7,7 @@
     <string name="cashvalue">0</string>
     <string name="deal">Deal</string>
     <string name="change">Change</string>
-
+    <string name="hold">Hold</string>
 
     <!--Names and values of the winning hands possible-->
     <string name="royalflushtitle">Royal flush</string>

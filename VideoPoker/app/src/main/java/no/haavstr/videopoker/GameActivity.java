@@ -27,7 +27,6 @@ public class GameActivity extends ActionBarActivity {
     private Button dealButton;
     private TextView cashView;
     public ImageView card1, card2, card3, card4, card5;
-    private ImageView [] cards = {card1, card2, card3, card4, card5};
     private Context context;
 
     public void onCreate(Bundle savedInstanceState) {
