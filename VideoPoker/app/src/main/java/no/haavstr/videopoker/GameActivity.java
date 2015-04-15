@@ -20,10 +20,11 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
     private int cash;
     private int placeInDeck = 0; //Indicates where in the deck the next card to be dealt is.
     private boolean changePosition[] = new boolean[5];
-    public boolean readyForNewRound;
+    private boolean readyForNewRound;
+    private boolean gameInProgress = false;
 
     private Button dealButton;
-    private TextView cashView;
+    private TextView cashView, winMessage;
     public ImageView card1, card2, card3, card4, card5;
     private Context context;
 
@@ -38,6 +39,8 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
         cashView = (TextView) findViewById(R.id.cashvalue);
         cashView.setText(Integer.toString(cash));
 
+        /* Instanciate a box for messages related to winnings */
+        winMessage = (TextView) findViewById(R.id.winmessage);
 
         /* Give the button for starting new rounds to an onclick-listener */
         dealButton = (Button) findViewById(R.id.deal);
@@ -162,6 +165,7 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
     void newRound(){
         cash--;
         showCash();
+        winMessage.setText("");
         deck.shuffle();
         for(int i = 0; i < 5 ; i++) {
             hand.hand[i] = deck.get(placeInDeck);
@@ -198,6 +202,7 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
         if (outcome != null) {
             cash += outcome.value;
             showCash();
+            winMessage.setText(outcome.toString());
         }
 
         /* Check to see if there is cash to start another round */
@@ -215,26 +220,5 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
         Arrays.fill(changePosition, false);
     }
 
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 }
