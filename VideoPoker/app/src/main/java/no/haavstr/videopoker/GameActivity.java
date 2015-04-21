@@ -34,11 +34,6 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
 
         context = getApplicationContext();
 
-        /* Give the player som cash to begin game */
-        cash = 100;
-        cashView = (TextView) findViewById(R.id.cashvalue);
-        cashView.setText(Integer.toString(cash));
-
         /* Instanciate a box for messages related to winnings */
         winMessage = (TextView) findViewById(R.id.winmessage);
 
@@ -144,6 +139,9 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
             }
         });
 
+        cash = 100;
+        cashView = (TextView) findViewById(R.id.cashvalue);
+        cashView.setText(Integer.toString(cash));
 
         deck = new Deck();
         hand = new Hand();
@@ -151,8 +149,28 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
         readyForNewRound = true;
     }
 
-    int getCash () {
-        return cash;
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putBoolean("readyForNewRound", readyForNewRound);
+        savedInstanceState.putBoolean("gameInProgress", gameInProgress);
+        savedInstanceState.putInt("cash", cash);
+        super.onSaveInstanceState(savedInstanceState);
+
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        readyForNewRound = savedInstanceState.getBoolean("readyForNewRound");
+        gameInProgress = savedInstanceState.getBoolean("gameInProgress");
+        cash = savedInstanceState.getInt("cash");
+        showCash();
+
+    }
+
+
+    void startNewCame() {
+        cash = 100;
     }
 
     void showCash() {
