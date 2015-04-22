@@ -7,7 +7,7 @@
     <string name="cashvalue">0</string>
     <string name="deal">Deal</string>
     <string name="change">Change</string>
-    <string name="gameover">Game ove! You lost all your money!</string>
+    <string name="gameover">Game over! You lost all your money!</string>
     <string name="newgame">New Game</string>
     <string name="hold">Hold</string>
 

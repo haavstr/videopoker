@@ -24,6 +24,7 @@ public class GameActivity extends Activity
     private boolean changePosition[] = new boolean[5];
     private boolean readyForNewRound;
     private boolean gameInProgress = false;
+    final private int BEGINNING_CASH = 100;
 
     private Button dealButton;
     private TextView cashView, winMessage;
@@ -74,8 +75,6 @@ public class GameActivity extends Activity
                     }
                 }
             });
-
-
         }
 
         // Set the TextView for the cash
@@ -92,7 +91,7 @@ public class GameActivity extends Activity
             deck = new Deck();
             hand = new Hand();
             resetChange();
-            cash = 100;
+            cash = 2;
             showCash();
             readyForNewRound = true;
         } else {
@@ -142,7 +141,8 @@ public class GameActivity extends Activity
 
     void gameOver() {
         winMessage.setText(R.string.gameover);
-        dealButton.setText(getResources().getString(R.string.newgame));
+        dealButton.setText(R.string.newgame);
+        cash = BEGINNING_CASH;
     }
     void newRound(){
         cash--;
@@ -201,10 +201,12 @@ public class GameActivity extends Activity
         /* Check to see if there is cash to start another round */
         if(cash <= 0) {
             gameOver();
+        } else {
+            dealButton.setText(getResources().getString(R.string.deal));
         }
 
         placeInDeck = 0;
-        dealButton.setText(getResources().getString(R.string.deal));
+
         readyForNewRound = true;
     }
 

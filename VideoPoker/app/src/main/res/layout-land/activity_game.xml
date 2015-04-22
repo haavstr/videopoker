@@ -167,7 +167,7 @@
             android:layout_toRightOf="@+id/card4"
             android:layout_margin="5dp" />
 
-        <Button android:id="@+id/deal" android:text="Deal"
+        <Button android:id="@+id/deal" android:text="@string/newgame"
             android:layout_weight="1"
             android:layout_width="0px"
             android:layout_height="wrap_content"
