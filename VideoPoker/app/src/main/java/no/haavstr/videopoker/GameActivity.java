@@ -160,7 +160,7 @@ public class GameActivity extends Activity
     /* Displayes the cards that are held in hand, show back of the card if the position is marked for change. Updates text on button to correct name */
     void updateCards() {
             for(int i = 0; i < 5; i++) {
-                if(changePosition[i]) {
+                if(changePosition[i] || hand.hand[i] == null) {
                     ImageView card = (ImageView) findViewById(getResources().getIdentifier("card" + (i + 1), "id", getPackageName()));
                     card.setImageResource(R.drawable.red_back);
                 } else {
