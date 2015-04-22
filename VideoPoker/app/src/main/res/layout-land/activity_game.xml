@@ -90,6 +90,7 @@
 
 
     <LinearLayout
+        android:id="@+id/winmessagespace"
         android:layout_height="20dp"
         android:layout_width="match_parent"
         android:layout_below="@id/winningstable"
@@ -112,7 +113,7 @@
         android:layout_height="fill_parent"
         android:layout_gravity="bottom"
         android:layout_weight="1"
-        android:layout_below="@id/winningstable"
+        android:layout_below="@id/winmessagespace"
         android:layout_alignParentBottom="true"
         android:gravity="end">
 

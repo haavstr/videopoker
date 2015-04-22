@@ -91,7 +91,7 @@ public class GameActivity extends Activity
             deck = new Deck();
             hand = new Hand();
             resetChange();
-            cash = 2;
+            cash = BEGINNING_CASH;
             showCash();
             readyForNewRound = true;
         } else {
