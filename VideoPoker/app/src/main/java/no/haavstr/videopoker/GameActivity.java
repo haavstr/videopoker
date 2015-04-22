@@ -1,7 +1,9 @@
 package no.haavstr.videopoker;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +15,7 @@ import java.util.Arrays;
 /**
  * Created by haavstr on 08.04.15.
  */
-public class GameActivity extends Activity //implements TaskFragment.TaskCallbacks
+public class GameActivity extends Activity
 {
     private Hand hand;
     private Deck deck;
@@ -25,8 +27,9 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
 
     private Button dealButton;
     private TextView cashView, winMessage;
-    public ImageView card1, card2, card3, card4, card5;
     private Context context;
+
+    private RetainedFragment dataFragment;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,103 +53,54 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
             }
         });
 
-        // For card-positions 1
-        card1 = (ImageView) findViewById(R.id.card1);
-        card1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //For each image of the cards a onclicklistener is set to flip the card to either show the front or the back of it.
+        for(int i = 0; i < 5; i++) {
+            final int fi;
+            fi = i;
+            final ImageView card = (ImageView) findViewById(getResources().getIdentifier("card"+(i+1), "id", getPackageName()));
+            card.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (!readyForNewRound) {
+                        // Card is marked for change already, so this click means the user wants to undo this. Show the card again
+                        if (changePosition[fi]) {
+                            changePosition[fi] = false;
+                            card.setImageResource(context.getResources().getIdentifier(hand.hand[fi].toString(), "drawable", context.getPackageName()));
+                            // Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this
+                        } else {
+                            changePosition[fi] = true;
+                            card.setImageResource(R.drawable.red_back);
+                        }
+                    }
+                }
+            });
 
-                if (!readyForNewRound) {
-                    // Card is marked for change already, so this click means the user wants to undo this. Show the card again
-                    if (changePosition[0]) {
-                        changePosition[0] = false;
-                        card1.setImageResource(context.getResources().getIdentifier(hand.hand[0].toString(), "drawable", context.getPackageName()));
-                    // Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
-                    } else {
-                        changePosition[0] = true;
-                        card1.setImageResource(R.drawable.red_back);
-                    }
-                }
-            }
-        });
 
-        card2 = (ImageView) findViewById(R.id.card2);
-        card2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            /* Card is marked for change already, so this click means the user wants to undo this. Show the card again*/
-                if (!readyForNewRound) {
-                    if (changePosition[1]) {
-                        changePosition[1] = false;
-                        card2.setImageResource(context.getResources().getIdentifier(hand.hand[1].toString(), "drawable", context.getPackageName()));
-                    /* Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
-                    } else {
-                        changePosition[1] = true;
-                        card2.setImageResource(R.drawable.red_back);
-                    }
-                }
-            }
-        });
-        card3 = (ImageView) findViewById(R.id.card3);
-        card3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            /* Card is marked for change already, so this click means the user wants to undo this. Show the card again*/
-                if (!readyForNewRound) {
-                    if (changePosition[2]) {
-                        changePosition[2] = false;
-                        card3.setImageResource(context.getResources().getIdentifier(hand.hand[2].toString(), "drawable", context.getPackageName()));
-                        /* Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
-                    } else {
-                        changePosition[2] = true;
-                        card3.setImageResource(R.drawable.red_back);
-                    }
-                }
-            }
-        });
-        card4 = (ImageView) findViewById(R.id.card4);
-        card4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            /* Card is marked for change already, so this click means the user wants to undo this. Show the card again*/
-                if (!readyForNewRound) {
-                    if (changePosition[3]) {
-                        changePosition[3] = false;
-                        card4.setImageResource(context.getResources().getIdentifier(hand.hand[3].toString(), "drawable", context.getPackageName()));
-                        /* Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
-                    } else {
-                        changePosition[3] = true;
-                        card4.setImageResource(R.drawable.red_back);
-                    }
-                }
-            }
-        });
-        card5 = (ImageView) findViewById(R.id.card5);
-        card5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            /* Card is marked for change already, so this click means the user wants to undo this. Show the card again*/
-                if (!readyForNewRound) {
-                    if (changePosition[4]) {
-                        changePosition[4] = false;
-                        card5.setImageResource(context.getResources().getIdentifier(hand.hand[4].toString(), "drawable", context.getPackageName()));
-                        /* Card is not already marked for change, so the user wants to do this. Show a backside of a card to indicate this */
-                    } else {
-                        changePosition[4] = true;
-                        card5.setImageResource(R.drawable.red_back);
-                    }
-                }
-            }
-        });
+        }
 
-        cash = 100;
+        // Set the TextView for the cash
         cashView = (TextView) findViewById(R.id.cashvalue);
-        cashView.setText(Integer.toString(cash));
 
-        deck = new Deck();
-        hand = new Hand();
-        resetChange();
-        readyForNewRound = true;
+        // Find the retained fragment with deck and hand on activity restarts
+        FragmentManager fm = getFragmentManager();
+        dataFragment = (RetainedFragment) fm.findFragmentByTag("data");
+
+        // Create the fragment and data on the first start
+        if(dataFragment == null) {
+            dataFragment = new RetainedFragment();
+            fm.beginTransaction().add(dataFragment, "data").commit();
+            deck = new Deck();
+            hand = new Hand();
+            resetChange();
+            cash = 100;
+            showCash();
+            readyForNewRound = true;
+        } else {
+            deck = dataFragment.getDeck();
+            hand = dataFragment.getHand();
+            changePosition = dataFragment.getChangePosition();
+        }
+
     }
 
     @Override
@@ -154,6 +108,7 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
         savedInstanceState.putBoolean("readyForNewRound", readyForNewRound);
         savedInstanceState.putBoolean("gameInProgress", gameInProgress);
         savedInstanceState.putInt("cash", cash);
+        savedInstanceState.putInt("placeInDeck", placeInDeck);
         super.onSaveInstanceState(savedInstanceState);
 
     }
@@ -161,24 +116,33 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+
+        // Set the values from the saved instance and update views too see them
         readyForNewRound = savedInstanceState.getBoolean("readyForNewRound");
         gameInProgress = savedInstanceState.getBoolean("gameInProgress");
         cash = savedInstanceState.getInt("cash");
         showCash();
+        placeInDeck = savedInstanceState.getInt("placeInDeck");
+        updateCards();
 
     }
 
 
-    void startNewCame() {
-        cash = 100;
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //Store hand and deck in retained fragment
+        dataFragment.setData(hand, deck, changePosition);
     }
+
 
     void showCash() {
         cashView.setText(Integer.toString(cash));
     }
 
     void gameOver() {
-        /*TODO*/
+        winMessage.setText(R.string.gameover);
+        dealButton.setText(getResources().getString(R.string.newgame));
     }
     void newRound(){
         cash--;
@@ -193,13 +157,23 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
         updateCards();
     }
 
+    /* Displayes the cards that are held in hand, show back of the card if the position is marked for change. Updates text on button to correct name */
     void updateCards() {
-        card1.setImageResource(context.getResources().getIdentifier(hand.hand[0].toString(), "drawable", context.getPackageName()));
-        card2.setImageResource(context.getResources().getIdentifier(hand.hand[1].toString(), "drawable", context.getPackageName()));
-        card3.setImageResource(context.getResources().getIdentifier(hand.hand[2].toString(), "drawable", context.getPackageName()));
-        card4.setImageResource(context.getResources().getIdentifier(hand.hand[3].toString(), "drawable", context.getPackageName()));
-        card5.setImageResource(context.getResources().getIdentifier(hand.hand[4].toString(), "drawable", context.getPackageName()));
-        dealButton.setText(getResources().getString(R.string.change));
+            for(int i = 0; i < 5; i++) {
+                if(changePosition[i]) {
+                    ImageView card = (ImageView) findViewById(getResources().getIdentifier("card" + (i + 1), "id", getPackageName()));
+                    card.setImageResource(R.drawable.red_back);
+                } else {
+                    ImageView card = (ImageView) findViewById(getResources().getIdentifier("card" + (i + 1), "id", getPackageName()));
+                    card.setImageResource(context.getResources().getIdentifier(hand.hand[i].toString(), "drawable", context.getPackageName()));
+                }
+            }
+            if(readyForNewRound) {
+                dealButton.setText(getResources().getString(R.string.deal));
+            } else {
+                dealButton.setText(getResources().getString(R.string.change));
+            }
+
     }
 
     void changeCards(){
@@ -209,6 +183,7 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
             }
             placeInDeck++;
         }
+        resetChange();
         updateCards();
         finishRound();
     }
@@ -228,7 +203,6 @@ public class GameActivity extends Activity //implements TaskFragment.TaskCallbac
             gameOver();
         }
 
-        resetChange();
         placeInDeck = 0;
         dealButton.setText(getResources().getString(R.string.deal));
         readyForNewRound = true;
